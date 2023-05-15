@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .icon {
+        @apply mx-auto p-7 mt-6 grid place-content-center rounded-full;
+    }
+}
+
 body {
     @apply bg-black/95 text-white;
 }

@@ -9,6 +9,14 @@ export enum RESULT {
     DRAW = "draw",
 }
 export interface GameState {
-    score: number;
-    choice: CHOICE | null;
+    user: {
+        score: number;
+        choice: CHOICE | null;
+    };
+    bot: {
+        score: number;
+        choice: CHOICE | null;
+    };
+    progress: number;
+    choiceStatus: RESULT | null;
 }
