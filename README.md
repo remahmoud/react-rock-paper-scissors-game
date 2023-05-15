@@ -1,3 +1,3 @@
 # Rock, Paper, Scissors game with react
 
-![screenshot][./public/screenshot.png]
+![screenshot](./public/screenshot.png)
