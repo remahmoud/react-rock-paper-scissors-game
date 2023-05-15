@@ -4,13 +4,12 @@ import {
     setChoices,
     progressIncrement,
     resetGame,
-    updateStatus,
 } from "../app/gameSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import rock from "../assets/rock.png";
 import paper from "../assets/paper.png";
 import scissors from "../assets/scissor.png";
-import { CHOICE, RESULT } from "../types";
+import { CHOICE } from "../types";
 
 export default function ChoiceForm() {
     const id = useId();
@@ -33,25 +32,31 @@ export default function ChoiceForm() {
 
         // game logic
         if (userChoice === CHOICE.ROCK && random === CHOICE.SCISSORS) {
+            // user win
+            // user is rock && bot is scissors
             dispatch(updateScore({ user: 1, bot: 0 }));
-            dispatch(updateStatus(RESULT.WIN));
         } else if (userChoice === CHOICE.ROCK && random === CHOICE.PAPER) {
+            // user lose
+            // user is rock && bot is paper
             dispatch(updateScore({ user: 0, bot: 1 }));
-            dispatch(updateStatus(RESULT.LOSE));
         } else if (userChoice === CHOICE.SCISSORS && random === CHOICE.PAPER) {
+            // user win
+            // user is scissors && bot is paper
             dispatch(updateScore({ user: 1, bot: 0 }));
-            dispatch(updateStatus(RESULT.WIN));
         } else if (userChoice === CHOICE.SCISSORS && random === CHOICE.ROCK) {
+            // user lose
+            // user is scissors && bot is rock
             dispatch(updateScore({ user: 0, bot: 1 }));
-            dispatch(updateStatus(RESULT.LOSE));
         } else if (userChoice === CHOICE.PAPER && random === CHOICE.ROCK) {
+            // user win
+            // user is paper && bot is rock
             dispatch(updateScore({ user: 1, bot: 0 }));
-            dispatch(updateStatus(RESULT.WIN));
         } else if (userChoice === CHOICE.PAPER && random === CHOICE.SCISSORS) {
+            // user lose
+            // user is paper && bot is scissors
             dispatch(updateScore({ user: 0, bot: 1 }));
-            dispatch(updateStatus(RESULT.LOSE));
         } else {
-            dispatch(updateStatus(RESULT.DRAW));
+            // draw
         }
         // reset user choice
         setUserChoice(null);
@@ -60,6 +65,7 @@ export default function ChoiceForm() {
     };
     const handleReset = (e: React.SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // reset game
         dispatch(resetGame());
     };
     return (

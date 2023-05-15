@@ -3,11 +3,6 @@ export enum CHOICE {
     SCISSORS = "scissors",
     ROCK = "rock",
 }
-export enum RESULT {
-    WIN = "win",
-    LOSE = "lose",
-    DRAW = "draw",
-}
 export interface GameState {
     user: {
         score: number;
@@ -18,5 +13,4 @@ export interface GameState {
         choice: CHOICE | null;
     };
     progress: number;
-    choiceStatus: RESULT | null;
 }

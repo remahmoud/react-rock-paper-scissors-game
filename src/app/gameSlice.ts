@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import type { CHOICE, GameState, RESULT } from "../types";
+import type { CHOICE, GameState } from "../types";
 
 const initialState: GameState = {
     user: {
@@ -11,7 +11,6 @@ const initialState: GameState = {
         choice: null,
     },
     progress: 0,
-    choiceStatus: null,
 };
 
 export const gameSlice = createSlice({
@@ -30,9 +29,6 @@ export const gameSlice = createSlice({
                 ...state.user,
                 score: state.user.score + action.payload.user,
             };
-        },
-        updateStatus: (state, action: PayloadAction<RESULT>) => {
-            state.choiceStatus = action.payload;
         },
         setChoices: (
             state,
@@ -58,12 +54,7 @@ export const gameSlice = createSlice({
     },
 });
 
-export const {
-    updateScore,
-    updateStatus,
-    setChoices,
-    progressIncrement,
-    resetGame,
-} = gameSlice.actions;
+export const { updateScore, setChoices, progressIncrement, resetGame } =
+    gameSlice.actions;
 
 export default gameSlice.reducer;
